@@ -3,7 +3,7 @@
 
 class VpDevImages {
 
-	private $romote_domine = "https://heroine.ru";
+	private $romote_domine = "https://you-domine.com";
 
 	function __construct() {
 		add_filter( "wp_get_attachment_image_src", [ $this, 'attachment_src' ], 10, 2 );
