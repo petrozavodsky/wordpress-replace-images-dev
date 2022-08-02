@@ -5,7 +5,7 @@ class VpDevImages {
 
 	private $romote_domine = "https://you-domine.com";
 
-	function __construct() {
+	public function __construct() {
 		add_filter( "wp_get_attachment_image_src", [ $this, 'attachment_src' ], 10, 2 );
 		add_filter( 'wp_calculate_image_srcset', [ $this, 'attachment_image_src' ], 10, 5 );
 	}
@@ -14,7 +14,7 @@ class VpDevImages {
 		return $this->prepare( $image, $attachment_id );
 	}
 
-	function attachment_image_src( $sources, $size_array, $image_src, $image_meta, $attachment_id ) {
+	public function attachment_image_src( $sources, $size_array, $image_src, $image_meta, $attachment_id ) {
 		$sources_new = [];
 
 		foreach ( $sources as $key => $val ) {
@@ -25,7 +25,7 @@ class VpDevImages {
 	}
 
 
-	function prepare( $array, $attachment_id ) {
+	public function prepare( $array, $attachment_id ) {
 
 
 		if ( array_key_exists( 'url', $array ) ) {
@@ -37,7 +37,7 @@ class VpDevImages {
 		return $array;
 	}
 
-	function replace( $url, $attachment_id ) {
+	public function replace( $url, $attachment_id ) {
 		$upload_dir_info = wp_get_upload_dir();
 		$tail            = str_replace( $upload_dir_info['baseurl'], "", $url );
 		$file_link       = $upload_dir_info ["basedir"] . $tail;
